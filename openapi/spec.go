@@ -106,7 +106,7 @@ type Parameter struct {
 	AllowEmptyValue bool         `json:"allowEmptyValue,omitempty" yaml:"allowEmptyValue,omitempty"`
 	Schema          *SchemaOrRef `json:"schema,omitempty" yaml:"schema,omitempty"`
 	Style           string       `json:"style,omitempty" yaml:"style,omitempty"`
-	Explode         bool         `json:"explode,omitempty" yaml:"explode,omitempty"`
+	Explode         *bool        `json:"explode,omitempty" yaml:"explode,omitempty"`
 }
 
 // ParameterOrRef represents a Parameter that can be inlined

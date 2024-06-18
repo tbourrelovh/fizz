@@ -253,9 +253,10 @@ func TestTonicHandler(t *testing.T) {
 }
 
 type testInputModel struct {
-	PathParam1 string `path:"a"`
-	PathParam2 int    `path:"b"`
-	QueryParam string `query:"q"`
+	PathParam1        string   `path:"a"`
+	PathParam2        int      `path:"b"`
+	QueryParam        string   `query:"q"`
+	ExplodeQueryParam []string `query:"eq" explode:"false"`
 }
 
 type testInputModel1 struct {

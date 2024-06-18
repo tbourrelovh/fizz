@@ -692,11 +692,12 @@ func (g *Generator) newParameterFromField(idx int, t reflect.Type) (*Parameter, 
 	// Style.
 	if location == g.config.QueryLocationTag {
 		if field.Type.Kind() == reflect.Slice || field.Type.Kind() == reflect.Array {
-			p.Explode = true // default
-			p.Style = "form" // default in spec, but make it obvious
+			p.Explode = new(bool)
+			*p.Explode = true // default
+			p.Style = "form"  // default in spec, but make it obvious
 			if t := field.Tag.Get(tonic.ExplodeTag); t != "" {
 				if explode, err := strconv.ParseBool(t); err == nil && !explode { // ignore invalid values
-					p.Explode = explode
+					*p.Explode = explode
 				}
 			}
 		}
@@ -1255,7 +1256,7 @@ func fieldNameFromTag(sf reflect.StructField, tagName string) string {
 	return name
 }
 
-/// parseExampleValue is used to transform the string representation of the example value to the correct type.
+// / parseExampleValue is used to transform the string representation of the example value to the correct type.
 func parseExampleValue(t reflect.Type, value string) (interface{}, error) {
 	// If the type implements Exampler use the ParseExample method to create the example
 	i, ok := reflect.New(t).Interface().(Exampler)

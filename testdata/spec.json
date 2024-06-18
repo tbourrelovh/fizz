@@ -151,6 +151,18 @@
                         }
                     },
                     {
+                        "name": "eq",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
                         "name": "q",
                         "in": "query",
                         "schema": {
